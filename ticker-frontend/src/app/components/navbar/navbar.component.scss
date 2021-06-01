@@ -1,0 +1,42 @@
+@import '../../styles/styles.scss';
+
+$navbar-height: 75px;
+$sidenav-width: 150px;
+
+.example-spacer {
+    flex: 1 auto;
+}
+
+.navbar {
+  padding: 0 50px 0 25px;
+  height: $navbar-height;
+  border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.content {
+  top: $navbar-height;
+}
+
+.sidenav-container {
+  position: absolute;
+  top: $navbar-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  mat-sidenav {
+    width: $sidenav-width;
+  }
+}
+
+.active-link {
+  color: #4dd0e1;
+}
+
+.title {
+  font-family: 'Droid', sans-serif;
+}
+
+.logo {
+  max-height: $navbar-height; 
+}

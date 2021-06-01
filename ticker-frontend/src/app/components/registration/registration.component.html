@@ -1,0 +1,39 @@
+<div class="flex-row padding-top">
+    <div class="flex-1"></div>
+
+    <div class="form-content flex-1">
+        <form (ngSubmit)="onSubmit()" class="form-content">
+            <h1 class="margin-bottom-25 center-text">New Account</h1>
+
+            <mat-form-field class="example-full-width">
+                <mat-label class="label-text">Username</mat-label>
+                <input type="text" matInput [formControl]="usernameFormControl" placeholder="Username">
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width">
+                <mat-label class="label-text">Password</mat-label>
+                <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password">
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width">
+                <mat-label class="label-text">Confirm Password</mat-label>
+                <input type="password" matInput [formControl]="confirmPasswordFormControl" placeholder="Confirm Password">
+            </mat-form-field>
+        
+            <div class="form-group float-right width-100">
+                <mat-progress-bar *ngIf="saving" style="height: 4px; width: 100%;" mode="indeterminate"></mat-progress-bar>
+
+                <button *ngIf="!saving" 
+                        [disabled]="passwordFormControl.value != confirmPasswordFormControl.value || passwordFormControl.value == ''" 
+                        mat-raised-button 
+                        color="primary" 
+                        class="btn btn-primary width-100">
+                    Register
+                </button>
+            </div>
+        </form>
+    </div>    
+
+    <div class="flex-1"></div>
+</div>
+

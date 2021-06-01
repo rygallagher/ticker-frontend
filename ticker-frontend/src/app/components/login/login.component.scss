@@ -1,0 +1,31 @@
+@import '../../styles/styles.scss';
+
+$form-width: 180px;
+
+.form-content {
+    max-width: $form-width;
+}
+
+.padding-top {
+    padding-top: 15vh;
+}
+
+.span-form {
+    width: $form-width;
+}
+
+.red-text {
+    color: $error;
+}
+
+.error-padding {
+    padding: 10px 0 20px 0;
+}
+
+.label-text {
+    color: lightgray;
+}
+
+.margin-top-5 {
+    margin-top: 5px;
+}

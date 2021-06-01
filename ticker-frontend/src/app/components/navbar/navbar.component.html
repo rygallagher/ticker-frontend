@@ -1,0 +1,23 @@
+<span [ngClass]="{'dark-theme': darkTheme,'light-theme': !darkTheme}">
+    <mat-toolbar class="navbar">
+        <div class="logo example-spacer flex-row">
+            <symbol-filter></symbol-filter>
+        </div>
+    
+        <button *ngIf="darkTheme" mat-icon-button (click)="toggleDarkMode()"><mat-icon>dark_mode</mat-icon></button>
+        <button *ngIf="!darkTheme" mat-icon-button (click)="toggleDarkMode()"><mat-icon>light_mode</mat-icon></button>
+        <button mat-icon-button class="menu-button" (click)="toggleSidenav()"><mat-icon>menu</mat-icon></button>
+    </mat-toolbar>
+    
+    <mat-sidenav-container class="sidenav-container">
+        <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+            <mat-nav-list>
+                <a mat-list-item routerLink="{{route.key}}" routerLinkActive="active-link" *ngFor="let route of routes | keyvalue">{{route.value}}</a>
+            </mat-nav-list>
+        </mat-sidenav>
+    
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</span>

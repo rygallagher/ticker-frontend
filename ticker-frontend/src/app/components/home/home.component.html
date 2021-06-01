@@ -1,0 +1,8 @@
+<ngb-carousel style="width: 100%; height: 100%;" [interval]="5000">
+    <ng-template ngbSlide *ngFor="let userSymbol of userSymbols">
+        <div style="margin-left: auto; margin-right: auto;">
+            {{userSymbol.symbol.symbol}} - {{userSymbol.symbol.description}}<br>
+            ${{userSymbol.symbol.price}}
+        </div>
+    </ng-template>
+</ngb-carousel>

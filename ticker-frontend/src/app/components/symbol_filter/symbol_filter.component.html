@@ -1,0 +1,30 @@
+<mat-form-field class="example-full-width" [floatLabel]="'never'" class="margin-lr-10">
+    <mat-label>Watch symbol...</mat-label>
+    
+    <input type="text"
+           placeholder="Watch symbol"
+           aria-label="Watch symbol"
+           matInput
+           autocomplete="off"
+           [formControl]="symbolFormControl"
+           [matAutocomplete]="auto">
+    
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displaySymbol" (optionSelected)='selectSymbol($event.option.value)'>
+        <mat-option *ngFor="let symbol of symbols" [value]="symbol">
+            {{symbol.symbol}} - {{symbol.description}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+<mat-form-field class="example-full-width" [floatLabel]="'never'" class="margin-lr-10">
+    <mat-label>Amount...</mat-label>
+    
+    <input type="number"
+           placeholder="Amount"
+           aria-label="Amount"
+           matInput
+           autocomplete="off"
+           [formControl]="amountFormControl">
+</mat-form-field>
+
+<button mat-stroked-button color="primary" (click)="watchSymbol()">Watch</button>

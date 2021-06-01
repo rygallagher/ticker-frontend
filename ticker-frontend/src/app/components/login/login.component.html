@@ -1,0 +1,31 @@
+<div class="flex-row padding-top">
+    <div class="flex-1"></div>
+    <form (ngSubmit)="onSubmit()" class="form-content flex-1">
+        <h2>Login</h2>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput [formControl]="usernameFormControl" placeholder="Username">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password">
+        </mat-form-field>
+
+        <div class="form-group">
+            <button *ngIf="!loading" 
+                    type="submit" 
+                    mat-raised-button 
+                    color="primary" 
+                    class="btn btn-primary span-form">
+                Login
+            </button>
+            
+            <mat-progress-bar *ngIf="loading" style="height: 4px;" mode="indeterminate"></mat-progress-bar>
+    
+            <a routerLink="/registration" routerLinkActive="register" class="btn btn-link">Register Here</a>
+        </div>
+    </form>
+    <div class="flex-1"></div>    
+</div>
