@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 export class LoginService {
+  baseUrl = 'http://mrtbit.com:8080';
 
-  baseUrl = 'http://localhost:8080';
   path = 'users/login';
 
   constructor(private http: HttpClient) { }
