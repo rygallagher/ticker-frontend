@@ -19,15 +19,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     
     ngOnInit(): void {
         const source = interval(3000);
-        this.getInitialSymbols();
-        this.subscription = source.subscribe(_ => this.getUserSymbols());
+        this._getInitialSymbols();
+        this.subscription = source.subscribe(_ => this._getUserSymbols());
     }
 
     ngOnDestroy() {
         this.subscription.unsubscribe();
     }
 
-    getInitialSymbols(): void {
+    private _getInitialSymbols(): void {
         //This is to make sure the carousel appears initially
         this._userSymbolService.getAll([], new Map()).subscribe(
             userSymbols => {
@@ -37,15 +37,15 @@ export class HomeComponent implements OnInit, OnDestroy {
         )
     }
 
-    getUserSymbols(): void {
+    private _getUserSymbols(): void {
         this._userSymbolService.getAll([], new Map()).subscribe(
             userSymbols => {
-                this.updateAndAddSymbols(userSymbols.map(x => x.symbol));
+                this._updateAndAddSymbols(userSymbols.map(x => x.symbol));
             }
         )
     }
 
-    updateAndAddSymbols(symbols: Symbol[]): void {
+    private _updateAndAddSymbols(symbols: Symbol[]): void {
         //We want to update fields of each symbol without wiping the list
         //Add any previously untracked symbols
         symbols.forEach(symbol => {
@@ -60,6 +60,10 @@ export class HomeComponent implements OnInit, OnDestroy {
                 this.symbols.push(symbol);
             }
         })
+    }
+
+    deleteUserSymbol(symbol: Symbol): void {
+        this._userSymbolService.delete([symbol.id]);
     }
 
     getPriceClass(symbol: Symbol): string {
