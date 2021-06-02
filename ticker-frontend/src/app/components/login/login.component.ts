@@ -49,7 +49,7 @@ export class LoginComponent {
                 (_) => {
                     this.loading = false;
                     this.error = true;
-                    this.errorMessage = 'You dun fucked it';
+                    this.errorMessage = 'Incorrect username or password.';
                 }
             );
     }
