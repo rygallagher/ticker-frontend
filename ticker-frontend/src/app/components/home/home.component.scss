@@ -1,10 +1,13 @@
 @import '../../styles/styles.scss';
 
-table {
-    width: 90%;
+.margin-top-40-vh {
+    margin-top: 40vh;
 }
 
-.scrollable-table {
-    max-height: 60vh;
-    overflow-y: auto;
+.error {
+    color: $error;
+}
+
+.success {
+    color: $success;
 }

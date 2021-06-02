@@ -13,7 +13,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     ) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(next.handle(request));
         return next.handle(request).pipe(catchError(err => {
             if (err.status === 401) {
                 this.tokenService.signOut();

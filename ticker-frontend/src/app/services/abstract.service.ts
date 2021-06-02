@@ -74,6 +74,6 @@ export abstract class AbstractService {
     }
 
     private _buildQueryParameters(queryParameters: Map<string, any>): string {
-        return Array.from(queryParameters.keys()).map(key => key + '=' + queryParameters.get(key)).join('&');
+        return queryParameters != null && queryParameters.size > 0 ? `?${Array.from(queryParameters.keys()).map(key => key + '=' + queryParameters.get(key)).join('&')}` : '';
     }
 }
