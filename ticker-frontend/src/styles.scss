@@ -54,7 +54,7 @@ $app-theme: mat-light-theme((
 // Dark theme.
 $dark-primary: mat-palette($mat-cyan);
 $dark-accent: mat-palette($mat-amber, A200, A100, A400);
-$dark-warn: mat-palette($mat-deep-orange);
+$dark-warn: mat-palette($mat-red);
 
 $dark-theme: mat-dark-theme((
   color: (

@@ -1,6 +1,18 @@
 <ngb-carousel style="width: 100%; height: 100%;" [interval]="5000">
-    <ng-template ngbSlide *ngFor="let symbol of symbols">
-        <div class="flex-2 big-font margin-top-40-vh center-text">
+    <ng-template ngbSlide *ngFor="let symbol of symbols" class="carousel">
+        <div class="margin-20">
+            <button class="clear-button"
+                    mat-icon-button
+                    matTooltip="Stop Watching"
+                    aria-label="Stop watching" 
+                    (click)="deleteUserSymbol(symbol)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        
+        <br><br>
+        
+        <div class="flex-2 big-font margin-top-half-vh center-text">            
             {{symbol.symbol}} - {{symbol.description}}
             <br><br>
             <span [ngClass]="getPriceClass(symbol)">${{symbol.price}}</span>

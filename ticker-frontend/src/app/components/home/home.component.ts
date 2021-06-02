@@ -63,7 +63,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     deleteUserSymbol(symbol: Symbol): void {
-        this._userSymbolService.delete([symbol.id]);
+        console.log("gets here")
+        this._userSymbolService
+            .delete([symbol.id])
+            .subscribe(_ => {
+                this._getInitialSymbols(); //re-initialize the list
+            });
     }
 
     getPriceClass(symbol: Symbol): string {
@@ -71,8 +76,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             return 'success';
         } else if (symbol.price < symbol.lastPrice) {
             return 'error';
+        } else {
+            return '';
         }
-
-        return '';
     }
 }

@@ -1,7 +1,7 @@
 @import '../../styles/styles.scss';
 
-.margin-top-40-vh {
-    margin-top: 40vh;
+.margin-top-half-vh {
+    margin-top: 30vh;
 }
 
 .error {
@@ -10,4 +10,15 @@
 
 .success {
     color: $success;
+}
+
+.clear-button {
+    display: block;
+    visibility: hidden;
+}
+
+.carousel:hover .clear-button {
+    display: block;
+    visibility: visible;
+    margin: auto;
 }
