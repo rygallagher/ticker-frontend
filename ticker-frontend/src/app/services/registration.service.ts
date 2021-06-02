@@ -11,7 +11,7 @@ export class RegistrationService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  baseUrl = 'http://localhost:8080';
+  baseUrl = 'http://mrtbit.com:8080';
   path = 'users/register';
 
   constructor(private http: HttpClient) {}
@@ -23,6 +23,7 @@ export class RegistrationService {
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
           'username': username,
           'password': password,
         })
