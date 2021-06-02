@@ -1,16 +1,17 @@
 <div class="flex-row padding-top">
     <div class="flex-1"></div>
+
     <form (ngSubmit)="onSubmit()" class="form-content flex-1">
-        <h2>Login</h2>
+        <h1 class="margin-bottom-25 center-text">Login</h1>
 
         <mat-form-field class="example-full-width">
             <mat-label>Username</mat-label>
-            <input type="text" matInput [formControl]="usernameFormControl" placeholder="Username">
+            <input autocomplete="off" type="text" matInput [formControl]="usernameFormControl" placeholder="Username">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
             <mat-label>Password</mat-label>
-            <input type="password" matInput [formControl]="passwordFormControl" placeholder="Password">
+            <input autocomplete="off" type="password" matInput [formControl]="passwordFormControl" placeholder="Password">
         </mat-form-field>
 
         <div *ngIf="error" class="error margin-tb-10">
@@ -31,5 +32,6 @@
             <a routerLink="/registration" routerLinkActive="register" class="btn btn-link">Register Here</a>
         </div>
     </form>
+
     <div class="flex-1"></div>    
 </div>
