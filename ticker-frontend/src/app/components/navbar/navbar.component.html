@@ -1,12 +1,12 @@
 <span [ngClass]="{'dark-theme': darkTheme,'light-theme': !darkTheme}">
     <mat-toolbar class="navbar">
         <div class="logo example-spacer flex-row">
-            <symbol-filter></symbol-filter>
+            <symbol-filter *ngIf="loggedIn"></symbol-filter>
         </div>
     
         <button *ngIf="darkTheme" mat-icon-button (click)="toggleDarkMode()"><mat-icon>dark_mode</mat-icon></button>
         <button *ngIf="!darkTheme" mat-icon-button (click)="toggleDarkMode()"><mat-icon>light_mode</mat-icon></button>
-        <button mat-icon-button class="menu-button" (click)="toggleSidenav()"><mat-icon>menu</mat-icon></button>
+        <button *ngIf="loggedIn" mat-icon-button class="menu-button" (click)="toggleSidenav()"><mat-icon>menu</mat-icon></button>
     </mat-toolbar>
     
     <mat-sidenav-container class="sidenav-container">

@@ -1,5 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { StorageService } from "src/app/services/storage.service";
 
 @Component({
     selector: 'navbar',
@@ -17,7 +18,12 @@ export class NavbarComponent {
     constructor(
         private _router: Router,
         private activatedRoute: ActivatedRoute,
+        private _tokenStorage: StorageService,
     ) {}
+
+    get loggedIn() {
+        return this._tokenStorage.getToken() != null;
+    }
 
     toggleSidenav(): void {
         this.opened = !this.opened;

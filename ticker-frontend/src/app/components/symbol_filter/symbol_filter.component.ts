@@ -34,7 +34,7 @@ export class SymbolFilterComponent {
     }
 
     filterSymbols(): void {        
-        this._symbolService.getAll(new Map([['search', this.symbolFilter]])).subscribe(symbols => {
+        this._symbolService.getAll([], new Map([['search', this.symbolFilter]])).subscribe(symbols => {
             this.symbols = symbols;
         });
     }
@@ -48,7 +48,7 @@ export class SymbolFilterComponent {
     }
 
     watchSymbol(): void {
-        this._userSymbolService.post(
+        this._userSymbolService.post([],
             [{
                 'symbolId': this.selectedSymbol.id,
                 'amount': this.amountFormControl.value != null ? this.amountFormControl.value : null

@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     getUserSymbols(): void {
-        this._userSymbolService.getAll(new Map()).subscribe(
+        this._userSymbolService.getAll([], new Map()).subscribe(
             userSymbols => {
                 this.userSymbols = userSymbols;
             }, 
