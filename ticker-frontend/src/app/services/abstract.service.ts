@@ -1,5 +1,4 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { stringify } from "@angular/compiler/src/util";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
@@ -21,27 +20,60 @@ export abstract class AbstractService {
 
     path!: string;
 
-    post(model: any): Observable<any> {
+    post(pathSegments: any[], model: any): Observable<any> {
+        var pathSegmentString = this._buildPathSegments(pathSegments);
+
         return this.http.post<any>(
-            `${this.baseUrl}/${this.path}`,
+            `${this.baseUrl}/${this.path}${pathSegmentString}`,
             JSON.stringify(model),
             this.httpOptions,
         );
     }
 
-    get(id: string): Observable<any> {
+    put(pathSegments: string[], body: any): Observable<any> {
+        var pathSegmentString = this._buildPathSegments(pathSegments);
+
+        return this.http.put<string>(
+            `${this.baseUrl}/${this.path}${pathSegmentString}`,
+            JSON.stringify(body),
+            this.httpOptions,
+          );
+    }
+
+    get(pathSegments: any[], queryParameters: Map<string, any>): Observable<any> {
+        var pathSegmentString = this._buildPathSegments(pathSegments);
+        var queryParameterString = this._buildQueryParameters(queryParameters);
+        
         return this.http.get<any>(
-            `${this.baseUrl}/${this.path}/${id}`,
+            `${this.baseUrl}/${this.path}${pathSegmentString}${queryParameterString}`,
             this.httpOptions,
         );
       }
 
-    getAll(map: Map<string, any>): Observable<any[]> {
-        var queryParameters = Array.from(map.keys()).map(key => key + '=' + map.get(key)).join('&');
+    getAll(pathSegments: any[], queryParameters: Map<string, any>): Observable<any[]> {
+        var pathSegmentString = this._buildPathSegments(pathSegments);
+        var queryParameterString = this._buildQueryParameters(queryParameters);
 
         return this.http.get<any[]>(
-            `${this.baseUrl}/${this.path}?${queryParameters}`,
+            `${this.baseUrl}/${this.path}${pathSegmentString}${queryParameterString}`,
             this.httpOptions,
         );
+    }
+
+    delete(pathSegments: any[]): Observable<any> {
+        var pathSegmentString = this._buildPathSegments(pathSegments);
+
+        return this.http.delete<any>(
+            `${this.baseUrl}/${this.path}${pathSegmentString}`,
+            this.httpOptions,
+        );
+    }
+
+    private _buildPathSegments(pathSegments: string[]): string {
+        return pathSegments != null && pathSegments.length > 0 ? `/${pathSegments.join('/')}` : '';
+    }
+
+    private _buildQueryParameters(queryParameters: Map<string, any>): string {
+        return Array.from(queryParameters.keys()).map(key => key + '=' + queryParameters.get(key)).join('&');
     }
 }
