@@ -19,6 +19,7 @@ export class LoginService {
       {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
           'username': username,
           'password': password,
         })
