@@ -11,7 +11,7 @@ export class RegistrationService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  baseUrl = 'http://localhost:8080';
+  baseUrl = 'https://localhost:8080';
   path = 'users/register';
 
   constructor(private http: HttpClient) {}

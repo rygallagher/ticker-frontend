@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 export class LoginService {
-  baseUrl = 'http://mrtbit.com:8080';
+  baseUrl = 'https://mrtbit.com:8080';
 
   path = 'users/login';
 

@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 export abstract class AbstractService {
     
-    baseUrl = 'http://mrtbit.com:8080';
+    baseUrl = 'https://mrtbit.com:8080';
 
     constructor(private http: HttpClient) { }
 
